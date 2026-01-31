@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT Y Branded Content - Eunseong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #000;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .back-link {
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 80px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #000;
+        }
+
+        .project-hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .project-hero .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        .meta-item h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .meta-item p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+        }
+
+        .content-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-section li {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .content-section li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-grid.single {
+            grid-template-columns: 1fr;
+        }
+
+        .image-grid.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Metrics Box */
+        .metrics-box {
+            background-color: #f9f9f9;
+            border: 2px solid #000;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .metrics-box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #000;
+            padding: 30px 40px;
+            margin: 40px 0;
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .step {
+            border: 1px solid #000;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Next Project */
+        .next-project {
+            background-color: #000;
+            color: #fff;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .next-project h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #999;
+        }
+
+        .next-project h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .next-project a {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .next-project a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-grid.three {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 36px;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid.three {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .next-project h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">home</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/song-eunseong-764164384" target="_blank" rel="noopener noreferrer">
+                        linkedin
+                    </a>
+                </li>
+                <li>
+                <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm"
+                    target="_blank" rel="noopener noreferrer">
+                    email
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Project Hero -->
+<section class="project-hero">
+  <h1>Bar &amp; Pub Revitalization</h1>
+  <p class="subtitle">Gen Z Insight, Participation-Driven Activation, and Budgeted Execution</p>
+
+  <div class="project-meta">
+    <div class="meta-item">
+      <h4>Date</h4>
+      <p>Sep – Dec 2022</p>
+    </div>
+    <div class="meta-item">
+      <h4>Role</h4>
+      <p>Project Lead &amp; Planner</p>
+    </div>
+    <div class="meta-item">
+      <h4>Tools</h4>
+      <p>Desk Research, Interviews, Microsoft Presentation, Budget Planning</p>
+    </div>
+    <div class="meta-item">
+      <h4>Category</h4>
+      <p>Local Marketing, Brand Repositioning, Experiential Activation</p>
+    </div>
+  </div>
+</section>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        
+<section class="content-section">
+  <h2>Overview</h2>
+  <p>
+    Juyuso is a bar and pub, and this project focused on <strong>rebuilding the relationship between the venue and Gen Z customers</strong> after COVID-19 by repositioning the concept and executing a participation-driven activation.
+  </p>
+  <p>
+    After we were <strong>selected as the 1st-place pitch team, we moved beyond a proposal and delivered the project in-market</strong>.
+    I <strong>defined the problem through Gen Z behavior and consumption insights, designed creative</strong>, and ensured feasibility through budgeting and execution planning.
+    Based on the owner’s feedback, <strong>Gen Z visits and sales increased by about 20%</strong>.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>Challenge</h2>
+  <p>
+    The challenge was to translate Juyuso’s strengths into a simple value proposition and <strong>connect it to an experience that could drive real visits through participation</strong>.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>Strategy</h2>
+
+  <h3>Gen Z insight-led reframing</h3>
+  <p>
+    I <strong>analyzed Gen Z consumption trends and clarified the behavioral shift</strong> toward smaller-group occasions and taste-driven choices, then reframed the problem as a positioning and experience gap.
+  </p>
+
+  <h3>Feasibility-first planning</h3>
+  <p>
+    I <strong>built a budget plan, prioritized spend items, and aligned the event scope</strong> to what could realistically be operated.
+  </p>
+</section>
+
+<!-- Process -->
+<section class="content-section">
+  <h2>Process</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h4>Research</h4>
+      <p>Analyzed post-COVID Gen Z drinking and consumption trends and reviewed local nightlife competitors to frame what drives real visits.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h4>Insight</h4>
+      <p>Clarified the behavioral shift and defined the core problem through Gen Z behavior and consumption insights, translating it into a participation-led experience brief.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <h4>Creative</h4>
+      <p>Planned immersive creative and designed a simple, repeatable participation mechanic that connects the brand to an on-site experience.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">04</div>
+      <h4>Execution</h4>
+      <p>Built a budget plan, prioritized spend items, aligned the event scope, and led project coordination from setup to in-market delivery.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="content-section">
+  <h2>Execution</h2>
+  <ul>
+    <li><strong>Analyzed post-COVID Gen Z drinking and consumption trends</strong> to identify shifts in occasions and preferences.</li>
+    <li><strong>Planned immersive creative</strong> that made the Juyuso concept easy to recognize and participate in.</li>
+    <li><strong>Led project coordination</strong> from planning through execution to keep timelines and deliverables on track.</li>
+  </ul>
+</section>
+
+
+
+
+
+        <!-- Images -->
+        <section class="content-section">
+            <div class="image-grid three">
+
+                <div>
+                    <img src="images/juyuso/juyuso1.jpeg" alt="YouTube uploads - KT Y branded content list">
+                    <p class="image-caption">Planning and executing an integrated online-offline event</p>
+                </div>
+
+                <div>
+                    <img src="images/juyuso/juyuso2.jpg" alt="Instagram Reels - KT Y branded content (87.9K views)">
+                    <p class="image-caption">Research and analysis of Gen Z drinking trends</p>
+                </div>
+
+                <div>
+                    <img src="images/juyuso/juyuso3.jpg" alt="Instagram Reels - Event promo for Gen Z students living alone (121K views)">
+                    <p class="image-caption">Developing a campaign budget</p>
+                </div>
+            </div>
+        </section>
+
+<!-- Impact -->
+<section class="content-section">
+  <div class="metrics-box">
+    <h3>Impact &amp; Results</h3>
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <span class="metric-value">1st</span>
+        <span class="metric-label">Pitch Team Selected</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-value">20%</span>
+        <span class="metric-label">Visits &amp; Sales Increase</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-value">Budgeted</span>
+        <span class="metric-label">Planned &amp; Executed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+            
+        </section>
+
+
+    </div>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <h3>Next Project</h3>
+        <h2>Independent Bookstore Event</h2>
+        <a href="project2.html">View Case Study →</a>
+    </section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Eunseong Song. All rights reserved.</p>
+  <p>
+    <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm"
+       target="_blank" rel="noopener noreferrer">
+      pickcle123@email.com
+    </a> |
+    <a href="https://www.linkedin.com/in/song-eunseong-764164384/"
+       target="_blank" rel="noopener noreferrer">
+      linkedin
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>

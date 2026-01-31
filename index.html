@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eunseong Song - Marketing Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "DM Sans", sans-serif; background:#fff; color:#000; line-height:1.5; }
+
+    /* Header */
+    header{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:20px 40px; border-bottom:1px solid #000;
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      z-index: 100;
+    }
+    .logo{ font-size:14px; letter-spacing:.5px; font-weight:400; }
+    nav ul{ list-style:none; display:flex; gap:30px; align-items:center; }
+    nav a{ text-decoration:none; color:#000; font-size:14px; font-weight:400; transition:opacity .3s; }
+    nav a:hover{ opacity:.6; }
+
+    /* Layout helpers */
+    .container{ max-width:1200px; margin:0 auto; padding:0 40px; }
+
+    /* Hero (Simple) */
+    .hero{
+      padding:70px 0 40px;
+      border-bottom:1px solid #000;
+    }
+    .hero-simple{
+      max-width: 70ch;
+    }
+    .hero h1{
+      font-size:64px;
+      line-height:1.05;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    .hero .tagline{
+      font-size:16px;
+      color:#111;
+      margin-bottom:18px;
+    }
+
+    /* CTA */
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 18px; border-radius:999px;
+      border:1px solid #000; text-decoration:none;
+      color:#000; font-size:14px; transition:all .2s;
+    }
+    .btn.primary{ background:#000; color:#fff; }
+    .btn:hover{ opacity:.75; }
+
+    /* Selected works (text cards) */
+    .selected{
+      padding:50px 0;
+      border-bottom:1px solid #000;
+      background:#f9f9f9;
+    }
+    .section-title{
+      font-size:14px; letter-spacing:1.5px; text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .selected-grid{
+      display:grid; grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+    }
+    .work-card{
+      grid-column: span 6;
+      border:1px solid #000; background:#fff;
+      padding:18px;
+      cursor:pointer;
+      transition:background .2s;
+    }
+    .work-card:hover{ background:#f5f5f5; }
+    .work-card h3{ font-size:16px; font-weight:700; margin-bottom:6px; }
+    .work-card .meta{ font-size:12px; color:#666; margin-bottom:10px; }
+    .work-card .desc{ font-size:13px; color:#333; }
+    .work-card .date{ font-size:12px; color:#666; margin-top:10px; }
+
+    /* Thumbnail grid */
+    .thumbs{
+      padding:50px 0 70px;
+    }
+    .thumbs .hint{ font-size:13px; color:#666; margin-bottom:18px; }
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:1px;
+      background:#000;
+      border:1px solid #000;
+    }
+    .project-item{
+      background:#fff;
+      aspect-ratio:1;
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      transition:background .2s;
+    }
+    .project-item:hover{ background:#f5f5f5; }
+    .project-item img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      opacity:.92;
+      transition:opacity .2s;
+    }
+    .project-item:hover img{ opacity:.72; }
+    .project-content{
+      position:relative; z-index:2;
+      background: rgba(255,255,255,.95);
+      padding:12px;
+    }
+    .project-content h4{ font-size:16px; font-weight:700; margin-bottom:6px; }
+    .project-content .category{ font-size:12px; color:#666; margin-bottom:8px; }
+    .project-content .metrics{ font-size:11px; font-weight:500; }
+
+    /* Placeholder colors */
+    .project-item:nth-child(1) { background-color: #f0f0f0; }
+    .project-item:nth-child(2) { background-color: #fef5f0; }
+    .project-item:nth-child(3) { background-color: #f0f5fe; }
+    .project-item:nth-child(4) { background-color: #fef0f8; }
+    .project-item:nth-child(5) { background-color: #f0fef5; }
+    .project-item:nth-child(6) { background-color: #fefbf0; }
+
+    /* Footer */
+    footer{
+      padding:60px 40px;
+      border-top:1px solid #000;
+      text-align:center;
+    }
+    footer p{ font-size:14px; margin:5px 0; }
+    footer a{ color:#000; text-decoration:underline; }
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .selected-grid{ gap:12px; }
+      .work-card{ grid-column: span 12; }
+      .projects-grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px){
+      header{ flex-direction:column; gap:14px; }
+      nav ul{ flex-wrap:wrap; justify-content:center; gap:14px; }
+      .container{ padding:0 20px; }
+      .hero h1{ font-size:42px; }
+      .projects-grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Eunseong Song</div>
+    <nav>
+      <ul>
+        <li><a href="#home">home</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/song-eunseong-764164384" target="_blank" rel="noopener noreferrer">linkedin</a>
+        </li>
+        <li>
+          <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm" target="_blank" rel="noopener noreferrer">email</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero (Simple) -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-simple">
+        <h1>Eunseong<br/>Song</h1>
+        <p class="tagline">Marketing · Content · Campaign Execution</p>
+      <div class="cta-row">
+        <a class="btn" href="resume.pdf" download="Resume.pdf">Resume (PDF)</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Works -->
+  <section class="selected" id="selected">
+    <div class="container">
+      <div class="section-title">Selected works</div>
+
+      <div class="selected-grid">
+        <div class="work-card" onclick="location.href='proj6.html'">
+          <h3>City Hall Partnership Marketing Project</h3>
+          <div class="meta">Integrated Campaign · Local Marketing</div>
+          <div class="desc">70+ store partnerships · 97K Reels views · Pop-up event with 1,000+ visitors · Regional campaign coordination</div>
+          <div class="date">May – Aug 2024</div>
+        </div>
+
+        <div class="work-card" onclick="location.href='proj3.html'">
+          <h3>No One Left Behind</h3>
+          <div class="meta">Social Impact · Instagram + Pop-up</div>
+          <div class="desc">17 Instagram posts · 77K peak Reels views · 2-day pop-up activation · 850+ event participants</div>
+          <div class="date">May – Jun 2023</div>
+        </div>
+
+        <div class="work-card" onclick="location.href='proj1.html'">
+          <h3>KT Y Branded Content</h3>
+          <div class="meta">Content Creation · YouTube + Instagram</div>
+          <div class="desc">10+ videos published · 121K peak views (Instagram Reels) · 6K+ avg views (YouTube) · Campaign proposal executed by brand</div>
+          <div class="date">Mar – Jul 2025</div>
+        </div>
+
+        <div class="work-card" onclick="location.href='proj2.html'">
+          <h3>KT Telecom Service Proposal</h3>
+          <div class="meta">Service Design · Strategy</div>
+          <div class="desc">Gen Z user research · Service blueprint development · Value proposition framework · Strategic proposal deck</div>
+          <div class="date">Apr 2025</div>
+        </div>
+
+        <div class="work-card" onclick="location.href='proj4.html'">
+          <h3>Bar & Pub Revitalization</h3>
+          <div class="meta">Local Business · Campaign Strategy</div>
+          <div class="desc">Multi-venue strategy · Social media content plan · Community activation framework · Local partnership development</div>
+          <div class="date">Aug 2024</div>
+        </div>
+
+        <div class="work-card" onclick="location.href='proj5.html'">
+          <h3>Independent Bookstore Event</h3>
+          <div class="meta">Event Marketing · Community Engagement</div>
+          <div class="desc">Event planning & execution · Promotional content creation · Foot traffic increase · Community engagement metrics</div>
+          <div class="date">Jun 2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thumbnail Grid -->
+  <section class="thumbs" id="portfolio">
+    <div class="container">
+      <div class="section-title">Portfolio</div>
+
+      <div class="projects-grid">
+  <div class="project-item" onclick="location.href='proj6.html'">
+    <img src="images/main/1.jpg" alt="City Hall Partnership thumbnail" />
+    <div class="project-content">
+      <h4>City Hall Partnership</h4>
+      <p class="category">Integrated Campaign</p>
+      <p class="metrics">70+ stores · 97K views · 1,000+ visitors</p>
+    </div>
+  </div>
+
+  <div class="project-item" onclick="location.href='proj3.html'">
+    <img src="images/main/2.jpg" alt="No One Left Behind thumbnail" />
+    <div class="project-content">
+      <h4>No One Left Behind</h4>
+      <p class="category">Social Impact</p>
+      <p class="metrics">77K views · 850+ participants</p>
+    </div>
+  </div>
+
+  <div class="project-item" onclick="location.href='proj1.html'">
+    <img src="images/main/3.jpg" alt="KT Y Branded Content thumbnail" />
+    <div class="project-content">
+      <h4>KT Y Branded Content</h4>
+      <p class="category">Content Creation</p>
+      <p class="metrics">121K peak views · 10+ videos</p>
+    </div>
+  </div>
+
+  <div class="project-item" onclick="location.href='proj2.html'">
+    <img src="images/main/4.jpg" alt="KT Telecom Proposal thumbnail" />
+    <div class="project-content">
+      <h4>KT Telecom Proposal</h4>
+      <p class="category">Service Design</p>
+      <p class="metrics">Strategy + proposal deck</p>
+    </div>
+  </div>
+
+  <div class="project-item" onclick="location.href='proj4.html'">
+    <img src="images/main/5.jpg" alt="Bar & Pub Revitalization thumbnail" />
+    <div class="project-content">
+      <h4>Bar & Pub Revitalization</h4>
+      <p class="category">Local Business</p>
+      <p class="metrics">Campaign strategy</p>
+    </div>
+  </div>
+
+  <div class="project-item" onclick="location.href='proj5.html'">
+    <img src="images/main/6.jpg" alt="Independent Bookstore Event thumbnail" />
+    <div class="project-content">
+      <h4>Independent Bookstore</h4>
+      <p class="category">Event Marketing</p>
+      <p class="metrics">Community engagement</p>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Eunseong Song. All rights reserved.</p>
+    <p>
+      <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm" target="_blank" rel="noopener noreferrer">pickcle123@email.com</a> |
+      <a href="https://www.linkedin.com/in/song-eunseong-764164384/" target="_blank" rel="noopener noreferrer">linkedin</a>
+    </p>
+  </footer>
+</body>
+</html>

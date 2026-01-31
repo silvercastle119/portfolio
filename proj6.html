@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT Y Branded Content - Eunseong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #000;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .back-link {
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 80px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #000;
+        }
+
+        .project-hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .project-hero .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        .meta-item h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .meta-item p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+        }
+
+        .content-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-section li {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .content-section li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-grid.single {
+            grid-template-columns: 1fr;
+        }
+
+        .image-grid.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Metrics Box */
+        .metrics-box {
+            background-color: #f9f9f9;
+            border: 2px solid #000;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .metrics-box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #000;
+            padding: 30px 40px;
+            margin: 40px 0;
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .step {
+            border: 1px solid #000;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Next Project */
+        .next-project {
+            background-color: #000;
+            color: #fff;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .next-project h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #999;
+        }
+
+        .next-project h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .next-project a {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .next-project a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-grid.three {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 36px;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid.three {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .next-project h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">home</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/song-eunseong-764164384" target="_blank" rel="noopener noreferrer">
+                        linkedin
+                    </a>
+                </li>
+                <li>
+                <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm"
+                    target="_blank" rel="noopener noreferrer">
+                    email
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Project Hero -->
+<section class="project-hero">
+  <h1>City Hall Partnership Marketing Project</h1>
+  <p class="subtitle">Integrated Local Campaign, Content-to-Conversion Journey, and Offline Pop-up Activation</p>
+
+  <div class="project-meta">
+    <div class="meta-item">
+      <h4>Date</h4>
+      <p>Aug – Dec 2025</p>
+    </div>
+    <div class="meta-item">
+      <h4>Role</h4>
+      <p>Marketing Intern (Marketer &amp; Brand Manager)</p>
+    </div>
+    <div class="meta-item">
+      <h4>Tools</h4>
+      <p>Instagram for Business, Content Production (Reels/Carousel), Front-end Development, Python, Event Operations</p>
+    </div>
+    <div class="meta-item">
+      <h4>Category</h4>
+      <p>Partnership Marketing, Local/District Marketing, Experiential Activation, Conversion</p>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        
+<!-- Overview -->
+<section class="content-section">
+  <h2>Overview</h2>
+  <p>
+    I <strong>interned as a marketer and brand manager</strong> at a branding and marketing agency and led
+    <strong>a local business marketing project in partnership with a city hall</strong>.
+    The goal was to drive district-level foot traffic and translate that traffic into sales growth and stronger brand awareness through an integrated campaign.
+    I connected <strong>Instagram content, a campaign landing page, and offline pop-up events</strong> into one coherent customer journey so online interest could convert into real visits and participation.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>Challenge</h2>
+  <p>
+    Store marketing was fragmented, with each business promoting independently, which diluted the district’s message and made it
+    <strong>difficult for awareness to translate into real visits</strong>.
+    The project also had to satisfy multiple needs at once—sales growth, street activation, and brand awareness—so relying on a single channel or one-off event would not be enough.
+    As a result, the biggest gap was not “lack of content,” but a weak path from exposure to attendance and participation.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>Strategy</h2>
+
+  <h3>Conversion-first journey design</h3>
+  <p>
+    I treated the campaign as a conversion system by clarifying the reason to visit for the 20s–40s audience, centralizing key information, and reducing participation friction across touchpoints.
+  </p>
+
+  <h3>Audience-led campaign planning</h3>
+  <p>
+    I <strong>designed an audience-led campaign flow for 20s–40s targets</strong>, aligning message direction, content formats, and offline participation to drive measurable foot traffic.
+  </p>
+</section>
+
+<!-- Process -->
+<section class="content-section">
+  <h2>Process</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h4>Research</h4>
+      <p>
+        Conducted stakeholder and field research by interviewing 70+ store owners to identify needs around sales growth, street activation, and brand awareness, then mapped the 20s–40s audience context.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h4>Insight</h4>
+      <p>
+        Diagnosed the core gap as “awareness not converting into visits,” and defined the key unlock as a conversion-first journey that clarifies the reason to visit and reduces friction from exposure to participation.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <h4>Promotion &amp; Creative</h4>
+      <p>
+        Designed an audience-led campaign flow for 20s–40s targets and produced Instagram Reels/carousel content using Instagram for Business, aligning messaging and creative across touchpoints to drive organic reach (97K+ views).
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">04</div>
+      <h4>Activation &amp; Conversion</h4>
+      <p>
+        Planned and executed offline pop-up events (including a book-festival-style activation with 1,000+ visitors) and front-end developed a campaign landing page to centralize information, guide participation, and refine execution using social performance and foot-traffic signals.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="content-section">
+  <h2>Execution</h2>
+
+  <h3>Field research &amp; planning</h3>
+  <p>
+    I grounded the campaign in field insights by speaking with owners from 70+ stores and synthesizing needs related to sales, street activation, and awareness into actionable priorities.
+    I then <strong>designed an audience-led campaign flow for 20s–40s targets</strong>, translating district strengths into a clear message direction and participation plan.
+  </p>
+
+  <h3>Content execution &amp; performance</h3>
+  <p>
+    I produced Instagram Reels and carousel posts using Instagram for Business and applied character assets to keep the tone consistent and make key messages instantly understandable,
+    <strong>achieving 97K+ organic views</strong>.
+  </p>
+
+  <h3>Offline activation</h3>
+  <p>
+    To drive real-world visits, I planned and executed <strong>offline pop-up events including a book-festival-style activation that attracted 1,000+ visitors</strong>.
+  </p>
+
+  <h3>Conversion touchpoint (Landing page)</h3>
+  <p>
+    To support conversion, I planned and <strong>front-end developed a campaign landing page</strong> to centralize essential information and guide users toward participation.
+    Throughout the project, I reviewed Instagram performance and foot-traffic data together and refined both online content and offline operations based on what was driving real visits.
+  </p>
+</section>
+
+
+
+
+
+
+        <!-- Images -->
+        <section class="content-section">
+            <div class="image-grid three">
+
+                <div>
+                    <img src="images/intern/intern3.JPG" alt="YouTube uploads - KT Y branded content list">
+                    <p class="image-caption">Offline campaign</p>
+                </div>
+
+                <div>
+                    <img src="images/intern/intern2.jpeg" alt="Instagram Reels - KT Y branded content (87.9K views)">
+                    <p class="image-caption">97.7K views on Instagram content</p>
+                </div>
+
+                <div>
+                    <img src="images/intern/intern1.jpg" alt="Instagram Reels - Event promo for Gen Z students living alone (121K views)">
+                    <p class="image-caption">Marketing landing page</p>
+                </div>
+            </div>
+        </section>
+
+<!-- Impact -->
+<section class="content-section">
+  <div class="metrics-box">
+    <h3>Impact &amp; Results</h3>
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <span class="metric-value">1,000+</span>
+        <span class="metric-label">Pop-up Event Visitors</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-value">97K+</span>
+        <span class="metric-label">Organic Views (IG Reels/Carousel)</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-value">Built</span>
+        <span class="metric-label">Campaign Landing Page (Front-end)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+            
+        </section>
+
+
+    </div>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <h3>Next Project</h3>
+        <h2>No One Left Behind</h2>
+        <a href="project2.html">View Case Study →</a>
+    </section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Eunseong Song. All rights reserved.</p>
+  <p>
+    <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm"
+       target="_blank" rel="noopener noreferrer">
+      pickcle123@email.com
+    </a> |
+    <a href="https://www.linkedin.com/in/song-eunseong-764164384/"
+       target="_blank" rel="noopener noreferrer">
+      linkedin
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>
