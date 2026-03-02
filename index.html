@@ -97,8 +97,21 @@
       grid-template-columns: repeat(3, 1fr);
       gap:1px;
       background:#000;
-      border:1px solid #000;
     }
+    .projects-outer {
+      border: 1px solid #000;
+    }
+  .projects-last {
+    display: inline-block;  /* 콘텐츠 너비만큼만 */
+    border-top: 1px solid #000;
+    width: calc(100% / 3);  /* 1칸 너비 */
+    border-right: 1px solid #000;
+  }
+
+  .projects-last .project-item {
+    width: 100%;
+    border-right: none;  /* outer에서 처리하니까 제거 */
+  }
     .project-item{
       background:#fff;
       aspect-ratio:1;
@@ -252,10 +265,10 @@
 
   <!-- Thumbnail Grid -->
   <section class="thumbs" id="portfolio">
-    <div class="container">
-      <div class="section-title">Portfolio</div>
-
-      <div class="projects-grid">
+  <div class="container">
+  <div class="section-title">Portfolio</div>
+  <div class="projects-outer">
+  <div class="projects-grid">
   <div class="project-item" onclick="location.href='proj6.html'">
     <img src="images/main/1.jpg" alt="City Hall Partnership thumbnail" />
     <div class="project-content">
@@ -309,19 +322,22 @@
       <p class="metrics">Community engagement</p>
     </div>
   </div>
-
-  <div class="project-item" onclick="location.href='proj7.html'">
-    <img src="images/main/7.jpg" alt="AI Safety Navigating App" />
-    <div class="project-content">
-      <h4>AI Safety Navigating App</h4>
-      <p class="category">AI Product · Accessibility</p>
-      <p class="metrics">Safer route guidance</p>
-    </div>
-  </div>
 </div>
 
+  <div class="projects-last">
+    <div class="project-item" onclick="location.href='proj7.html'">
+      <img src="images/main/7.jpg" alt="AI Safety Navigating App" />
+      <div class="project-content">
+        <h4>AI Safety Navigating App</h4>
+        <p class="category">AI Product · Accessibility</p>
+        <p class="metrics">Safer route guidance</p>
       </div>
     </div>
+  </div>
+  </div>     
+
+  </div>
+  </div>
   </section>
 
   <!-- Footer -->
