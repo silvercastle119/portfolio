@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT Y Branded Content - Eunseong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #000;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .back-link {
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 80px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #000;
+        }
+
+        .project-hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .project-hero .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        .meta-item h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .meta-item p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+        }
+
+        .content-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-section li {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .content-section li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-grid.single {
+            grid-template-columns: 1fr;
+        }
+
+        .image-grid.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Metrics Box */
+        .metrics-box {
+            background-color: #f9f9f9;
+            border: 2px solid #000;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .metrics-box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #000;
+            padding: 30px 40px;
+            margin: 40px 0;
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .step {
+            border: 1px solid #000;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Next Project */
+        .next-project {
+            background-color: #000;
+            color: #fff;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .next-project h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #999;
+        }
+
+        .next-project h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .next-project a {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .next-project a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-grid.three {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 36px;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid.three {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .next-project h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">home</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/song-eunseong-764164384" target="_blank" rel="noopener noreferrer">
+                        linkedin
+                    </a>
+                </li>
+                <li>
+                <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm"
+                    target="_blank" rel="noopener noreferrer">
+                    email
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Project Hero -->
+<section class="project-hero">
+  <h1>AI Safety Navigating App</h1>
+  <p class="subtitle">AI-based Personalized Map App for Safer Route Guidance, UX/UI Design, and Test-driven Iteration</p>
+
+  <div class="project-meta">
+    <div class="meta-item">
+      <h4>Date</h4>
+      <p>Mar 2025 – Jan 2026</p>
+    </div>
+    <div class="meta-item">
+      <h4>Role</h4>
+      <p>Product Manager (PM), UX/UI Designer</p>
+    </div>
+    <div class="meta-item">
+      <h4>Tools</h4>
+      <p>Figma, Python, Oracle SQL (SQL Developer), Tmap API, Public Data Portal, Notion, GitHub</p>
+    </div>
+    <div class="meta-item">
+      <h4>Category</h4>
+      <p>AI Product, Accessibility, UX/UI, User Research, Mapping, Testing & Iteration</p>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        
+<!-- Overview -->
+<section class="content-section">
+  <h2>Overview</h2>
+    <p>
+        As part of <strong>KFAS</strong>, I led product planning for an <strong>AI-based safety navigation app</strong> designed to help pedestrians find safer, easier-to-follow routes through personalized guidance.
+        As <strong>PM and UX/UI Designer</strong>, I owned the full product cycle — from problem definition and user research to feature planning, developer communication, testing, and iterative improvement.
+        I connected <strong>API-sourced infrastructure data, usability-driven UX design, and a test-based feedback loop</strong> into one coherent product flow so safety signals could translate into real, confident route decisions.
+    </p>
+</section>
+
+<section class="content-section">
+  <h2>Challenge</h2>
+    <p>
+        Existing pedestrian navigation services optimize primarily for <strong>shortest distance</strong>, failing to account for diverse user needs — including age, accessibility, and varying levels of map literacy.
+        In particular, route <strong>complexity and difficulty</strong> were not factored in, meaning "short but confusing and unsafe routes" were routinely recommended.
+        The core gap was not a lack of data, but the absence of a product layer that could translate safety and accessibility signals into a route experience users could actually understand and trust.
+    </p>
+</section>
+
+<section class="content-section">
+  <h2>Strategy</h2>
+
+        <h3>Difficulty-first route design</h3>
+        <p>
+            I redefined "safe route" beyond hazard avoidance to mean a path that is <strong>easy to follow and low in cognitive load</strong> for any user.
+            Feature design and screen flow were structured around reducing route difficulty — measured through risk segment count, complexity score, and detour rate — rather than just displaying safety information.
+        </p>
+
+        <h3>Infrastructure data layer + test-driven iteration</h3>
+        <p>
+            I built the routing foundation by collecting safety-relevant infrastructure signals — streetlights, convenience stores, police stations, foot traffic, benches, and major buildings — via <strong>Tmap API</strong> and the <strong>Public Data Portal</strong>.
+            Product assumptions were then validated and refined through repeated alpha/beta testing cycles, with user feedback directly shaping each iteration.
+        </p>
+</section>
+
+<!-- Process -->
+<section class="content-section">
+  <h2>Process</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h4>Research</h4>
+            <p>
+                Conducted user interviews with <strong>50 participants across ages 20–60</strong> to identify pain points in pedestrian navigation — particularly around route comprehension, safety perception, and the difficulty of following existing map guidance.
+                Benchmarked existing services (including Naver Maps) to map where users with different characteristics experienced confusion or drop-off.
+            </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <h4>Insight</h4>
+                <p>
+                    Diagnosed the core gap as: shortest-path optimization fails to reflect <strong>route difficulty and individual usability</strong>, creating a disconnect between "technically correct" navigation and what users can actually follow safely.
+                    Defined the key unlock as redesigning route recommendation logic — and the UX around it — to reduce difficulty as a first-class metric, not an afterthought.
+                </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+        <h4>Planning &amp; Design</h4>
+            <p>
+                Planned core app features (personalized routing, difficulty/safety signals, guidance clarity) and designed alpha/beta test scenarios and survey instruments to validate each assumption.
+                Built the UX/UI framework in <strong>Figma</strong>, researching accessibility standards from comparable services and applying principles around <strong>color contrast, font sizing, and object spacing</strong> to maximize clarity for all users.
+            </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">04</div>
+        <h4>Build, Test, Iterate</h4>
+            <p>
+                Collected and structured infrastructure data via <strong>Tmap API</strong> and the <strong>Public Data Portal</strong>, then worked closely with developers to translate product requirements into implementable specs.
+                Ran <strong>alpha (10 users) and beta (10 users)</strong> test rounds to gather structured feedback, driving iterative fixes; additionally used <strong>Oracle SQL</strong>-based social data analysis to extract user sentiment on existing map apps and feed findings into prioritization.
+            </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="content-section">
+  <h2>Execution</h2>
+
+        <h3>User research & problem framing</h3>
+        <p>
+            I grounded the product in real user context by conducting 50 interviews and synthesizing findings into a clear problem definition: route difficulty, not just safety, was the primary barrier.
+            I also ran <strong>Oracle SQL-based social listening</strong> on existing map app reviews to surface recurring complaints and validate the research direction with quantitative signal.
+        </p>
+
+        <h3>Feature planning & UX/UI design</h3>
+        <p>
+            I planned the full feature set for the app and designed the UX/UI framework directly in <strong>Figma</strong>, referencing third-party accessibility design systems to apply contrast, scale, and spacing standards.
+            Each screen was built around reducing decision fatigue — making safety-relevant information immediately readable without adding cognitive load to the route experience.
+        </p>
+
+        <h3>Data collection & developer collaboration</h3>
+        <p>
+            I collected infrastructure data (streetlights, convenience stores, police stations, foot traffic, benches, major buildings) via <strong>Tmap API</strong> and <strong>Korea's Public Data Portal</strong> and structured it for routing use.
+            As PM, I communicated requirements to the development team and ensured product intent translated accurately into the built experience.
+        </p>
+
+        <h3>Alpha/Beta testing & iteration</h3>
+        <p>
+            I designed and operated both alpha (10 users) and beta (10 users) test rounds, collecting structured feedback through surveys and follow-up sessions.
+            Each round produced a clear list of usability issues and feature gaps, which I prioritized and fed back into design and development — reducing route difficulty by <strong>60%</strong> and lifting user satisfaction by <strong>40%</strong> compared to existing navigation services.
+        </p>
+</section>
+
+
+
+
+
+
+<!-- Images -->
+<section class="content-section">
+    <div class="image-grid" style="
+        grid-template-columns: 1fr 2fr;
+        max-width: 900px;
+        margin: 40px auto;
+    ">
+        <div>
+            <img src="images/KFAS/KFAS1.JPG" alt="Key UX/UI screens of the AI Safety Navigating App">
+            <p class="image-caption">UX/UI key screens</p>
+        </div>
+        <div>
+            <img src="images/KFAS/KFAS2.JPG" alt="data layer visualization for safer routing">
+            <p class="image-caption">Data layer</p>
+        </div>
+    </div>
+</section>
+
+<!-- Impact -->
+    <section class="content-section">
+        <div class="metrics-box">
+            <h3>Impact &amp; Results</h3>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-value">60%</span>
+                    <span class="metric-label">Reduction in Route Difficulty</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-value">40%</span>
+                    <span class="metric-label">Increase in User Satisfaction vs. Existing Apps</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-value">Built</span>
+                    <span class="metric-label">End-to-end UX/UI Framework (Figma)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+            
+        </section>
+
+
+    </div>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <h3>Next Project</h3>
+        <h2>City Hall Partnership Marketing Project</h2>
+        <a href="proj6.html">View Case Study →</a>
+    </section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Eunseong Song. All rights reserved.</p>
+  <p>
+    <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm"
+       target="_blank" rel="noopener noreferrer">
+      pickcle123@email.com
+    </a> |
+    <a href="https://www.linkedin.com/in/song-eunseong-764164384/"
+       target="_blank" rel="noopener noreferrer">
+      linkedin
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>
