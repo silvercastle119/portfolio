@@ -391,6 +391,33 @@
     display: block;
 }
 
+.data-table {
+    margin: 30px 0;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.data-table th,
+.data-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.data-table th {
+    background-color: #f3f3f3;
+    font-weight: 700;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
         /* Footer */
         footer {
             padding: 60px 40px;
@@ -758,16 +785,55 @@ plt.show()</code></pre>
         <li>Demonstrated the ability to connect <strong>data architecture directly to product design</strong></li>
     </ul>
 
-    <div class="image-grid">
-        <div>
-            <img src="images/data/navigation-data-layer.jpg" alt="Pedestrian navigation data layer">
-            <p class="image-caption">Infrastructure and environmental data structured into route evaluation layers</p>
-        </div>
-        <div>
-            <img src="images/data/navigation-cover.jpg" alt="Pedestrian safety navigation system overview">
-            <p class="image-caption">Data-driven safety routing framework applied to product design</p>
-        </div>
-    </div>
+    <h3>Data Structuring Framework</h3>
+<p>
+    To translate fragmented urban data into a usable routing system, I categorized each dataset based on its functional role in safety and usability evaluation.
+</p>
+
+<div class="data-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Data Category</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Route structure data</td>
+                <td>Route complexity analysis</td>
+            </tr>
+            <tr>
+                <td>Crime statistics</td>
+                <td>Risk area detection</td>
+            </tr>
+            <tr>
+                <td>Real-time pedestrian / traffic volume</td>
+                <td>Environmental activity level</td>
+            </tr>
+            <tr>
+                <td>Street lighting data</td>
+                <td>Nighttime safety analysis</td>
+            </tr>
+            <tr>
+                <td>Urban structure data</td>
+                <td>Visibility constraints</td>
+            </tr>
+            <tr>
+                <td>CCTV location data</td>
+                <td>Security infrastructure</td>
+            </tr>
+            <tr>
+                <td>Construction zone data</td>
+                <td>Temporary hazards</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>
+    → This structure enabled multiple heterogeneous datasets to be translated into a <strong>consistent safety evaluation logic</strong> for route decision-making.
+</p>
 
     <div class="code-sample">
         <h3>Code Sample (Navigation Data)</h3>
