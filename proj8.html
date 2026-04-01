@@ -418,6 +418,17 @@
     border-bottom: none;
 }
 
+.visual-proof {
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.visual-proof img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
         /* Footer */
         footer {
             padding: 60px 40px;
@@ -680,8 +691,9 @@
 <!-- Execution -->
 <section class="content-section">
     <h2>Execution</h2>
-
-    <h3>Content Consumption Pattern Analysis (Netflix)</h3>
+<div class="project-block">
+    <h3 class="project-title">01. Netflix Content Analysis</h3>
+    <h3>Content Consumption Pattern Analysis</h3>
     <ul>
         <li>Analyzed <strong>Netflix Original movie rankings across countries</strong> using CSV-based datasets</li>
         <li>Designed a comparative framework using two key metrics: <strong>Content Diversity</strong> and <strong>Popularity Depth</strong></li>
@@ -695,7 +707,7 @@
     </div>
 
     <div class="code-sample">
-        <h3>Code Sample (Netflix)</h3>
+        <h3>Code Sample</h3>
         <p>
             This Python workflow merges country-level CSV files, filters Netflix Original movies, structures popularity counts by country, and compares <strong>content diversity vs. popularity depth</strong> through visualization.
         </p>
@@ -776,8 +788,10 @@ for nation in duplication:
 plt.savefig("Compare.jpg")
 plt.show()</code></pre>
     </div>
-
-    <h3>Product Safety Signal Structuring (Pedestrian Navigation)</h3>
+    </div>
+<div class="project-block">
+    <h3 class="project-title">02. Pedestrian Safety Data System</h3>
+    <h3>Product Safety Signal Structuring</h3>
     <ul>
         <li>Collected and processed <strong>urban infrastructure and environmental datasets</strong> through public APIs</li>
         <li>Structured heterogeneous data such as CCTV, bus stops, and construction zones into <strong>map-ready layers</strong></li>
@@ -836,7 +850,7 @@ plt.show()</code></pre>
 </p>
 
     <div class="code-sample">
-        <h3>Code Sample (Navigation Data)</h3>
+        <h3>Code Sample</h3>
         <p>
             This workflow collects public infrastructure data, filters location-relevant records, and transforms them into <strong>map-ready geospatial layers</strong> for route safety evaluation.
         </p>
@@ -889,8 +903,10 @@ while True:
 df = pd.DataFrame(seoul_data)
 df.to_csv('seoul_cctv_only.csv', encoding='utf-8-sig', index=False)</code></pre>
     </div>
-
-    <h3>Purchase Decision Factor Analysis (Artificial Turf)</h3>
+</div>
+<div class="project-block">
+    <h3 class="project-title">03. Artificial Turf Decision Analysis</h3>
+    <h3>Purchase Decision Factor Analysis</h3>
     <ul>
         <li>Analyzed <strong>social media conversations</strong> using Meltwater and SQL-based keyword categorization</li>
         <li>Grouped raw user expressions into decision categories such as <strong>Price Value, Maintenance, Aesthetic Appeal, and Safety</strong></li>
@@ -950,7 +966,7 @@ df.to_csv('seoul_cctv_only.csv', encoding='utf-8-sig', index=False)</code></pre>
 </p>
 
     <div class="code-sample">
-        <h3>Code Sample (Artificial Turf)</h3>
+        <h3>Code Sample</h3>
         <p>
             This SQL logic categorizes unstructured consumer expressions into <strong>purchase decision factors</strong>, enabling social media conversations to be translated into strategic insight.
         </p>
@@ -985,6 +1001,7 @@ WHERE LOWER(COALESCE(Hit_Sentence, '')) LIKE '%beautiful%'
    OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%look natural%'
    OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%stays green%';</code></pre>
     </div>
+</div>
 </section>
         <!-- Impact -->
         <section class="content-section">
