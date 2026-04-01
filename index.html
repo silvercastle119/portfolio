@@ -101,17 +101,6 @@
     .projects-outer {
       border: 1px solid #000;
     }
-  .projects-last {
-    display: inline-block;  /* 콘텐츠 너비만큼만 */
-    border-top: 1px solid #000;
-    width: calc(100% / 3);  /* 1칸 너비 */
-    border-right: 1px solid #000;
-  }
-
-  .projects-last .project-item {
-    width: 100%;
-    border-right: none;  /* outer에서 처리하니까 제거 */
-  }
     .project-item{
       background:#fff;
       aspect-ratio:1;
@@ -133,11 +122,15 @@
       transition:opacity .2s;
     }
     .project-item:hover img{ opacity:.72; }
-    .project-content{
-      position:relative; z-index:2;
-      background: rgba(255,255,255,.95);
-      padding:12px;
-    }
+.project-content {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  background: rgba(255,255,255,.92);
+  padding: 12px;
+}
     .project-content h4{ font-size:16px; font-weight:700; margin-bottom:6px; }
     .project-content .category{ font-size:12px; color:#666; margin-bottom:8px; }
     .project-content .metrics{ font-size:11px; font-weight:500; }
@@ -158,48 +151,6 @@
     }
     footer p{ font-size:14px; margin:5px 0; }
     footer a{ color:#000; text-decoration:underline; }
-
-    .projects-last {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.project-item {
-  position: relative;
-  height: 500px;
-  overflow: hidden;
-  border-top: 1px solid #000;
-  border-left: 1px solid #000;
-}
-
-.project-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.project-content {
-  position: absolute;
-  left: 36px;
-  right: 36px;
-  bottom: 36px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 18px 20px;
-}
-
-.project-content h4 {
-  margin-bottom: 8px;
-}
-
-.project-content .category {
-  margin-bottom: 8px;
-  color: #666;
-}
-
-.project-content .metrics {
-  margin-bottom: 0;
-}
 
     /* Responsive */
     @media (max-width: 1024px){
@@ -371,9 +322,6 @@
       <p class="metrics">Community engagement</p>
     </div>
   </div>
-</div>
-
-  <div class="projects-last">
     <div class="project-item" onclick="location.href='proj7.html'">
       <img src="images/main/7.jpg" alt="AI Safety Navigating App" />
       <div class="project-content">
@@ -381,10 +329,8 @@
         <p class="category">AI Product · Accessibility</p>
         <p class="metrics">Safer route guidance</p>
       </div>
-    </div>
   </div>
 
-  <div class="projects-last">
     <div class="project-item" onclick="location.href='proj8.html'">
       <img src="images/main/8.jpg" alt="Data Analysis Framework" />
       <div class="project-content">
@@ -394,7 +340,9 @@
       </div>
     </div>
   </div>
-  </div>     
+</div>
+
+  
 
   </div>
   </div>
