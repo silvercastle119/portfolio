@@ -650,25 +650,30 @@
             </div>
         </section>
 
-        <!-- Execution -->
-        <section class="content-section">
-            <h2>Execution</h2>
-
-            <h3>Content Consumption Pattern Analysis (Netflix)</h3>
-            <ul>
-                <li>Analyzed <strong>Netflix Original movie rankings across countries</strong> using CSV-based datasets</li>
-                <li>Designed a comparative framework using two key metrics: <strong>Content Diversity</strong> and <strong>Popularity Depth</strong></li>
-                <li>Identified whether markets showed diverse consumption patterns or concentrated popularity around a few titles</li>
-                <li>Demonstrated how <strong>metric design itself changes the direction of insight</strong></li>
-            </ul>
-
+<!-- Execution -->
 <section class="content-section">
-  <h3>Code Sample</h3>
-  <p>
-    This Python workflow merges country-level CSV files, filters Netflix Original movies, structures popularity counts by country, and compares <strong>content diversity vs. popularity depth</strong> through visualization.
-  </p>
+    <h2>Execution</h2>
 
-  <pre class="code-block"><code>import pandas as pd
+    <h3>Content Consumption Pattern Analysis (Netflix)</h3>
+    <ul>
+        <li>Analyzed <strong>Netflix Original movie rankings across countries</strong> using CSV-based datasets</li>
+        <li>Designed a comparative framework using two key metrics: <strong>Content Diversity</strong> and <strong>Popularity Depth</strong></li>
+        <li>Identified whether markets showed diverse consumption patterns or concentrated popularity around a few titles</li>
+        <li>Demonstrated how <strong>metric design itself changes the direction of insight</strong></li>
+    </ul>
+
+    <div class="visual-proof">
+        <img src="images/data/netflix-graph.jpg" alt="Netflix diversity vs popularity comparison graph">
+        <p class="image-caption">Comparison framework showing diversity vs. popularity concentration across countries</p>
+    </div>
+
+    <div class="code-sample">
+        <h3>Code Sample (Netflix)</h3>
+        <p>
+            This Python workflow merges country-level CSV files, filters Netflix Original movies, structures popularity counts by country, and compares <strong>content diversity vs. popularity depth</strong> through visualization.
+        </p>
+
+        <pre class="code-block"><code>import pandas as pd
 import glob
 import os
 import matplotlib.pyplot as plt
@@ -743,57 +748,139 @@ for nation in duplication:
 
 plt.savefig("Compare.jpg")
 plt.show()</code></pre>
+    </div>
+
+    <h3>Product Safety Signal Structuring (Pedestrian Navigation)</h3>
+    <ul>
+        <li>Collected and processed <strong>urban infrastructure and environmental datasets</strong> through public APIs</li>
+        <li>Structured heterogeneous data such as CCTV, bus stops, and construction zones into <strong>map-ready layers</strong></li>
+        <li>Built a safety evaluation logic that integrates multiple signals into a usable routing system</li>
+        <li>Demonstrated the ability to connect <strong>data architecture directly to product design</strong></li>
+    </ul>
+
+    <div class="image-grid">
+        <div>
+            <img src="images/data/navigation-data-layer.jpg" alt="Pedestrian navigation data layer">
+            <p class="image-caption">Infrastructure and environmental data structured into route evaluation layers</p>
+        </div>
+        <div>
+            <img src="images/data/navigation-cover.jpg" alt="Pedestrian safety navigation system overview">
+            <p class="image-caption">Data-driven safety routing framework applied to product design</p>
+        </div>
+    </div>
+
+    <div class="code-sample">
+        <h3>Code Sample (Navigation Data)</h3>
+        <p>
+            This workflow collects public infrastructure data, filters location-relevant records, and transforms them into <strong>map-ready geospatial layers</strong> for route safety evaluation.
+        </p>
+
+        <pre class="code-block"><code>import requests
+import pandas as pd
+from xml.etree import ElementTree as ET
+
+base_url = 'http://safemap.go.kr/openapi2/IF_0131'
+
+def safe_text(element, tag):
+    elem = element.find(tag)
+    return elem.text.strip() if elem is not None and elem.text else ''
+
+def get_cctv_data(page_no=1, num_rows=1000):
+    params = {
+        'serviceKey': 'Key',
+        'pageNo': str(page_no),
+        'numOfRows': str(num_rows),
+        'returnType': 'xml'
+    }
+    response = requests.get(base_url, params=params)
+    if response.status_code != 200:
+        return []
+
+    root = ET.fromstring(response.text)
+    return root.findall('.//item')
+
+seoul_data = []
+page = 1
+
+while True:
+    items = get_cctv_data(page, 1000)
+    if not items:
+        break
+
+    for item in items:
+        x = safe_text(item, 'x')
+        y = safe_text(item, 'y')
+        adres = safe_text(item, 'lctn_rona_addr')
+
+        if x and y and '서울' in adres:
+            seoul_data.append({
+                'address': adres,
+                'longitude': x,
+                'latitude': y
+            })
+    page += 1
+
+df = pd.DataFrame(seoul_data)
+df.to_csv('seoul_cctv_only.csv', encoding='utf-8-sig', index=False)</code></pre>
+    </div>
+
+    <h3>Purchase Decision Factor Analysis (Artificial Turf)</h3>
+    <ul>
+        <li>Analyzed <strong>social media conversations</strong> using Meltwater and SQL-based keyword categorization</li>
+        <li>Grouped raw user expressions into decision categories such as <strong>Price Value, Maintenance, Aesthetic Appeal, and Safety</strong></li>
+        <li>Used <strong>post reach</strong> rather than post volume as a proxy for influence, revealing which themes shape perception most strongly</li>
+        <li>Found that <strong>price-related conversations overwhelmingly dominated consumer perception</strong>, followed by maintenance concerns</li>
+        <li>Demonstrated the ability to turn <strong>unstructured social data into marketing strategy insight</strong></li>
+    </ul>
+
+    <div class="image-grid">
+        <div>
+            <img src="images/data/turf-query.jpg" alt="Artificial turf Meltwater query">
+            <p class="image-caption">Social listening query design for collecting purchase-related consumer expressions</p>
+        </div>
+        <div>
+            <img src="images/data/turf-chart.jpg" alt="Artificial turf decision factor analysis result">
+            <p class="image-caption">Reach-weighted analysis showing price and maintenance as dominant decision drivers</p>
+        </div>
+    </div>
+
+    <div class="code-sample">
+        <h3>Code Sample (Artificial Turf)</h3>
+        <p>
+            This SQL logic categorizes unstructured consumer expressions into <strong>purchase decision factors</strong>, enabling social media conversations to be translated into strategic insight.
+        </p>
+
+        <pre class="code-block"><code>SELECT *,
+'Price_Value' AS category
+FROM data
+WHERE LOWER(COALESCE(Hit_Sentence, '')) LIKE '%cost%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%price%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%budget%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%worth it%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%cheaper%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%expensive%'
+
+UNION ALL
+
+SELECT *,
+'Low_Maintenance' AS category
+FROM data
+WHERE LOWER(COALESCE(Hit_Sentence, '')) LIKE '%low-maintenance%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%maintenance-free%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%no mowing%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%no watering%'
+
+UNION ALL
+
+SELECT *,
+'Aesthetic_Appeal' AS category
+FROM data
+WHERE LOWER(COALESCE(Hit_Sentence, '')) LIKE '%beautiful%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%lush%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%look natural%'
+   OR LOWER(COALESCE(Hit_Sentence, '')) LIKE '%stays green%';</code></pre>
+    </div>
 </section>
-
-                <div>
-                    <img src="images/data/netflix-graph.jpg" alt="Netflix diversity vs popularity comparison graph">
-                    <p class="image-caption">Comparison framework: diversity vs. popularity concentration across countries</p>
-                </div>
-
-            <h3>Product Safety Signal Structuring (Pedestrian Navigation)</h3>
-            <ul>
-                <li>Collected and processed <strong>urban infrastructure and environmental datasets</strong> through public APIs</li>
-                <li>Structured heterogeneous data such as CCTV, bus stops, and construction zones into <strong>map-ready layers</strong></li>
-                <li>Built a safety evaluation logic that integrates multiple signals into a usable routing system</li>
-                <li>Demonstrated the ability to connect <strong>data architecture directly to product design</strong></li>
-            </ul>
-
-            <div class="image-grid">
-                <div>
-                    <img src="images/data/navigation-data-layer.jpg" alt="Pedestrian navigation data layer">
-                    <p class="image-caption">Infrastructure and environmental data structured into route evaluation layers</p>
-                </div>
-                <div>
-                    <img src="images/data/navigation-code.jpg" alt="Pedestrian navigation Python code">
-                    <p class="image-caption">Python-based API processing, filtering, and geospatial structuring workflow</p>
-                </div>
-            </div>
-
-            <h3>Purchase Decision Factor Analysis (Artificial Turf)</h3>
-            <ul>
-                <li>Analyzed <strong>social media conversations</strong> using Meltwater and SQL-based keyword categorization</li>
-                <li>Grouped raw user expressions into decision categories such as <strong>Price Value, Maintenance, Aesthetic Appeal, and Safety</strong></li>
-                <li>Used <strong>post reach</strong> rather than post volume as a proxy for influence, revealing which themes shape perception most strongly</li>
-                <li>Found that <strong>price-related conversations overwhelmingly dominated consumer perception</strong>, followed by maintenance concerns</li>
-                <li>Demonstrated the ability to turn <strong>unstructured social data into marketing strategy insight</strong></li>
-            </ul>
-
-            <div class="image-grid three">
-                <div>
-                    <img src="images/data/turf-query.jpg" alt="Artificial turf Meltwater query">
-                    <p class="image-caption">Social listening query design for collecting purchase-related consumer expressions</p>
-                </div>
-                <div>
-                    <img src="images/data/turf-sql.jpg" alt="Artificial turf SQL categorization logic">
-                    <p class="image-caption">SQL-based categorization of decision factors from unstructured user expressions</p>
-                </div>
-                <div>
-                    <img src="images/data/turf-chart.jpg" alt="Artificial turf decision factor analysis result">
-                    <p class="image-caption">Reach-weighted analysis showing price and maintenance as dominant decision drivers</p>
-                </div>
-            </div>
-        </section>
-
         <!-- Impact -->
         <section class="content-section">
             <div class="metrics-box">
