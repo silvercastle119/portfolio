@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-Driven Analysis & Decision Framework - Eunseong Song</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #000;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        .back-link {
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            padding: 80px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #000;
+        }
+
+        .project-hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .project-hero .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        .meta-item h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .meta-item p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Content */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+        }
+
+        .content-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-section li {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .content-section li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* Insight → Idea */
+        .insight-idea-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .insight-box {
+            width: 100%;
+            max-width: 800px;
+            padding: 10px 30px 30px 30px;
+            border: 2px solid #000;
+            background-color: #f9f9f9;
+        }
+
+        .idea-box {
+            width: 100%;
+            max-width: 800px;
+            padding: 10px 30px 30px 30px;
+            border: 3px solid #000;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .idea-box h3,
+        .idea-box p,
+        .idea-box strong {
+            color: #fff;
+        }
+
+        .arrow {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1;
+        }
+
+        /* Scope Grid */
+        .analysis-scope {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0 10px;
+        }
+
+        .scope-item {
+            text-align: center;
+        }
+
+        .scope-item img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            object-fit: cover;
+        }
+
+        .scope-item p {
+            margin-top: 10px;
+            margin-bottom: 4px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .scope-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .step {
+            border: 1px solid #000;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-grid.single {
+            grid-template-columns: 1fr;
+        }
+
+        .image-grid.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Metrics */
+        .metrics-box {
+            background-color: #f9f9f9;
+            border: 2px solid #000;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .metrics-box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Next Project */
+        .next-project {
+            background-color: #000;
+            color: #fff;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .next-project h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #999;
+        }
+
+        .next-project h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .next-project a {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .next-project a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .analysis-scope {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-grid.three {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 36px;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid,
+            .image-grid.three {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .next-project h2 {
+                font-size: 32px;
+            }
+
+            .insight-box,
+            .idea-box {
+                padding: 16px 20px 24px 20px;
+            }
+
+            .arrow {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">home</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/song-eunseong-764164384" target="_blank" rel="noopener noreferrer">
+                        linkedin
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm" target="_blank" rel="noopener noreferrer">
+                        email
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <h1>Data-Driven Analysis &amp; Decision Framework</h1>
+        <p class="subtitle">Cross-domain Analysis of Content Consumption, Product Signals, and Purchase Decision Drivers</p>
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <h4>Date</h4>
+                <p>Oct 2022 – May 2026</p>
+            </div>
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Data Analysis, Insight Structuring, Strategy Translation</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>Python, Pandas, Matplotlib, Oracle SQL, Meltwater, CSV Data Processing, API/CSV Structuring</p>
+            </div>
+            <div class="meta-item">
+                <h4>Category</h4>
+                <p>Data Analysis, Social Listening, Consumer Insight, Decision Framework</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+
+        <!-- Overview -->
+        <section class="content-section">
+            <h2>Overview</h2>
+            <p>
+                I conducted multiple <strong>data-driven analysis projects</strong> to understand how people behave, decide, and respond across different contexts, including <strong>content consumption, product evaluation, and purchase-related social discourse</strong>.
+            </p>
+            <p>
+                Rather than focusing on descriptive analytics alone, I designed <strong>analytical frameworks</strong> that transform fragmented data into structured insights, enabling clearer decision-making for <strong>product and marketing strategy</strong>.
+            </p>
+            <p>
+                Across these projects, I worked with <strong>CSV datasets, social media listening data, SQL-based categorization, and Python-based analysis</strong> to connect raw signals to actionable conclusions.
+            </p>
+
+            <h3>Scope of Analysis</h3>
+            <div class="analysis-scope">
+                <div class="scope-item">
+                    <img src="images/data/netflix-cover.jpg" alt="Netflix content consumption analysis">
+                    <p>Content Consumption</p>
+                    <p class="scope-desc">Designed a comparison framework to analyze diversity and popularity concentration across countries.</p>
+                </div>
+
+                <div class="scope-item">
+                    <img src="images/data/navigation-cover.jpg" alt="Pedestrian safety navigation data analysis">
+                    <p>Product &amp; System Data</p>
+                    <p class="scope-desc">Structured multi-source urban datasets into a safety-oriented route evaluation system.</p>
+                </div>
+
+                <div class="scope-item">
+                    <img src="images/data/turf-cover.jpg" alt="Artificial turf purchase decision analysis">
+                    <p>Purchase Decision</p>
+                    <p class="scope-desc">Translated social media conversations into marketing insights by categorizing real consumer decision factors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenge -->
+        <section class="content-section">
+            <h2>Challenge</h2>
+            <p>
+                Data is often abundant but not directly usable for decision-making.
+            </p>
+            <p>
+                Raw datasets, social media conversations, and ranking data contain valuable signals, but without a <strong>clear analytical structure</strong>, they remain fragmented and difficult to interpret.
+            </p>
+            <p>
+                The core challenge was not collecting data, but designing a framework that transforms diverse data sources into <strong>meaningful indicators that can guide strategic decisions</strong>.
+            </p>
+        </section>
+
+        <!-- Insight → Idea -->
+        <section class="content-section">
+            <h2>Insight → Idea</h2>
+
+            <div class="insight-idea-wrapper">
+                <div class="insight-box">
+                    <h3>Insight</h3>
+                    <p>
+                        <strong>Raw data does not create value—the structure of analysis determines the direction of insights.</strong>
+                    </p>
+                    <p>
+                        The same dataset can lead to very different conclusions depending on <strong>how it is organized, measured, and interpreted</strong>.
+                    </p>
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="idea-box">
+                    <h3>Idea</h3>
+                    <p>
+                        <strong>Design analytical frameworks that convert fragmented data into decision-ready insights, linking data directly to strategy and action.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy -->
+        <section class="content-section">
+            <h2>Strategy</h2>
+
+            <h3>Framework-Driven Analysis Design</h3>
+            <p>
+                I focused on designing <strong>analytical structures</strong> that define how data should be interpreted, rather than simply extracting metrics.
+            </p>
+
+            <h3>Signal-to-Insight Translation</h3>
+            <p>
+                I transformed raw data signals into <strong>structured indicators</strong> such as diversity vs. concentration, reach-based influence, and categorized decision factors that directly inform decision-making.
+            </p>
+
+            <h3>Cross-Context Application</h3>
+            <p>
+                I applied the same analytical thinking across different domains—<strong>content consumption, product systems, and consumer purchase behavior</strong>—to validate its adaptability and strategic usefulness.
+            </p>
+        </section>
+
+        <!-- Workflow -->
+        <section class="content-section">
+            <h2>Workflow</h2>
+            <div class="process-steps">
+
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h4>Collection</h4>
+                    <p>
+                        Gathered ranking data, public datasets, and social media conversations from multiple sources.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h4>Structuring</h4>
+                    <p>
+                        Defined analytical categories, comparison metrics, and classification logic to organize raw signals.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h4>Analysis</h4>
+                    <p>
+                        Applied Python, SQL, and data processing workflows to generate interpretable patterns and indicators.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h4>Decision</h4>
+                    <p>
+                        Translated analysis results into actionable implications for product logic, content strategy, and marketing messaging.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Execution -->
+        <section class="content-section">
+            <h2>Execution</h2>
+
+            <h3>Content Consumption Pattern Analysis (Netflix)</h3>
+            <ul>
+                <li>Analyzed <strong>Netflix Original movie rankings across countries</strong> using CSV-based datasets</li>
+                <li>Designed a comparative framework using two key metrics: <strong>Content Diversity</strong> and <strong>Popularity Depth</strong></li>
+                <li>Identified whether markets showed diverse consumption patterns or concentrated popularity around a few titles</li>
+                <li>Demonstrated how <strong>metric design itself changes the direction of insight</strong></li>
+            </ul>
+
+            <div class="image-grid">
+                <div>
+                    <img src="images/data/netflix-graph.jpg" alt="Netflix diversity vs popularity comparison graph">
+                    <p class="image-caption">Comparison framework: diversity vs. popularity concentration across countries</p>
+                </div>
+                <div>
+                    <img src="images/data/netflix-code.jpg" alt="Netflix Python analysis code">
+                    <p class="image-caption">Python-based data integration, filtering, and comparative visualization</p>
+                </div>
+            </div>
+
+            <h3>Product Safety Signal Structuring (Pedestrian Navigation)</h3>
+            <ul>
+                <li>Collected and processed <strong>urban infrastructure and environmental datasets</strong> through public APIs</li>
+                <li>Structured heterogeneous data such as CCTV, bus stops, and construction zones into <strong>map-ready layers</strong></li>
+                <li>Built a safety evaluation logic that integrates multiple signals into a usable routing system</li>
+                <li>Demonstrated the ability to connect <strong>data architecture directly to product design</strong></li>
+            </ul>
+
+            <div class="image-grid">
+                <div>
+                    <img src="images/data/navigation-data-layer.jpg" alt="Pedestrian navigation data layer">
+                    <p class="image-caption">Infrastructure and environmental data structured into route evaluation layers</p>
+                </div>
+                <div>
+                    <img src="images/data/navigation-code.jpg" alt="Pedestrian navigation Python code">
+                    <p class="image-caption">Python-based API processing, filtering, and geospatial structuring workflow</p>
+                </div>
+            </div>
+
+            <h3>Purchase Decision Factor Analysis (Artificial Turf)</h3>
+            <ul>
+                <li>Analyzed <strong>social media conversations</strong> using Meltwater and SQL-based keyword categorization</li>
+                <li>Grouped raw user expressions into decision categories such as <strong>Price Value, Maintenance, Aesthetic Appeal, and Safety</strong></li>
+                <li>Used <strong>post reach</strong> rather than post volume as a proxy for influence, revealing which themes shape perception most strongly</li>
+                <li>Found that <strong>price-related conversations overwhelmingly dominated consumer perception</strong>, followed by maintenance concerns</li>
+                <li>Demonstrated the ability to turn <strong>unstructured social data into marketing strategy insight</strong></li>
+            </ul>
+
+            <div class="image-grid three">
+                <div>
+                    <img src="images/data/turf-query.jpg" alt="Artificial turf Meltwater query">
+                    <p class="image-caption">Social listening query design for collecting purchase-related consumer expressions</p>
+                </div>
+                <div>
+                    <img src="images/data/turf-sql.jpg" alt="Artificial turf SQL categorization logic">
+                    <p class="image-caption">SQL-based categorization of decision factors from unstructured user expressions</p>
+                </div>
+                <div>
+                    <img src="images/data/turf-chart.jpg" alt="Artificial turf decision factor analysis result">
+                    <p class="image-caption">Reach-weighted analysis showing price and maintenance as dominant decision drivers</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="content-section">
+            <div class="metrics-box">
+                <h3>Impact &amp; Results</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-value">3</span>
+                        <span class="metric-label">Analysis Contexts</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">Built</span>
+                        <span class="metric-label">Decision Frameworks</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">Linked</span>
+                        <span class="metric-label">Data to Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <strong>Demonstrated the ability to design analytical frameworks that transform raw data into structured insights, enabling clearer and more actionable decision-making across product and marketing contexts.</strong>
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <h3>Next Project</h3>
+        <h2>City Hall Partnership Marketing Project</h2>
+        <a href="proj6.html">View Case Study →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Eunseong Song. All rights reserved.</p>
+        <p>
+            <a href="https://mail.google.com/mail/u/0/?to=pickcle123@email.com&tf=cm" target="_blank" rel="noopener noreferrer">
+                pickcle123@email.com
+            </a> |
+            <a href="https://www.linkedin.com/in/song-eunseong-764164384/" target="_blank" rel="noopener noreferrer">
+                linkedin
+            </a>
+        </p>
+    </footer>
+
+</body>
+</html>
