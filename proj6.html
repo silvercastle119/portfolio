@@ -112,7 +112,53 @@
             font-size: 15px;
             font-weight: 500;
         }
+/* Insight → Idea Flow */
+.insight-idea-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin: 50px 0;
+}
 
+/* Insight Box */
+.insight-box {
+    width: 100%;
+    max-width: 800px;
+    padding: 10px 30px 30px 30px;
+    border: 2px solid #000;
+    background-color: #f9f9f9;
+}
+
+/* Idea Box */
+.idea-box {
+    width: 100%;
+    max-width: 800px;
+    padding: 10px 30px 30px 30px;
+    border: 3px solid #000;
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 6px 0 #000;
+}
+
+/* Idea Text Color Fix */
+.idea-box h3,
+.idea-box p {
+    color: #fff;
+}
+
+/* Title spacing */
+.insight-box h3,
+.idea-box h3 {
+    margin-bottom: 12px;
+}
+
+/* Arrow */
+.arrow {
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0.6;
+}
         /* Content Sections */
         .content-wrapper {
             max-width: 1200px;
@@ -455,46 +501,101 @@
 <section class="content-section">
   <h2>Overview</h2>
   <p>
-    I <strong>interned as a marketer and brand manager</strong> at a branding and marketing agency and led
+    I interned as a <strong>marketer and brand manager</strong> at a branding and marketing agency and led
     <strong>a local business marketing project in partnership with a city hall</strong>.
-    The goal was to drive district-level foot traffic and translate that traffic into sales growth and stronger brand awareness through an integrated campaign.
-    I connected <strong>Instagram content, a campaign landing page, and offline pop-up events</strong> into one coherent customer journey so online interest could convert into real visits and participation.
+  </p>
+  <p>
+    The objective was not only to increase district-level awareness, but to 
+    <strong>turn awareness into real visits, participation, and sales opportunities</strong>. 
+    To solve this, I built an integrated campaign that connected 
+    <strong>Instagram content, a campaign landing page, and offline pop-up activations</strong> 
+    into one coherent customer journey.
+  </p>
+  <p>
+    Rather than treating content, information, and events as separate tasks, I designed them as 
+    <strong>linked conversion touchpoints</strong> so online interest could move naturally into offline action.
   </p>
 </section>
 
+<!-- Challenge -->
 <section class="content-section">
   <h2>Challenge</h2>
   <p>
-    Store marketing was fragmented, with each business promoting independently, which diluted the district’s message and made it
-    <strong>difficult for awareness to translate into real visits</strong>.
-    The project also had to satisfy multiple needs at once—sales growth, street activation, and brand awareness—so relying on a single channel or one-off event would not be enough.
-    As a result, the biggest gap was not “lack of content,” but a weak path from exposure to attendance and participation.
+    Store marketing across the district was highly fragmented, with each business promoting independently, which diluted the message and made it 
+    <strong>difficult for awareness to turn into real visits</strong>.
+  </p>
+  <p>
+    The project also needed to satisfy multiple goals at once—<strong>sales growth, street activation, and brand awareness</strong>—making it insufficient to rely on a single channel or one-off event.
+  </p>
+  <p>
+    The real problem was not a lack of promotion, but a 
+    <strong>weak journey from exposure to attendance</strong>. 
+    People could discover the campaign, but there was no strong, seamless path that turned curiosity into participation.
   </p>
 </section>
 
+<!-- Insight & Idea -->
+<section class="content-section">
+  <h2>Insight → Idea</h2>
+
+  <div class="insight-idea-wrapper">
+      
+      <div class="insight-box">
+          <h3>Insight</h3>
+          <p>
+            <strong>Awareness alone does not drive visits</strong>. People act when they have both 
+            <strong>a clear reason to go</strong> and a <strong>frictionless path to participate</strong>.
+          </p>
+          <p>
+            In this project, information was fragmented across touchpoints, causing users to drop off before taking action. 
+            To increase real foot traffic, the campaign needed to 
+            <strong>connect discovery, information, and participation into one continuous experience</strong>.
+          </p>
+      </div>
+
+      <div class="arrow">↓</div>
+
+      <div class="idea-box">
+          <h3>Idea</h3>
+          <p>
+            <strong>Turn fragmented awareness into real visits by designing one seamless journey—from content discovery to on-site participation.</strong>
+          </p>
+      </div>
+
+  </div>
+</section>
+
+<!-- Strategy -->
 <section class="content-section">
   <h2>Strategy</h2>
 
-  <h3>Conversion-first journey design</h3>
+  <h3>Conversion-First Journey Design</h3>
   <p>
-    I treated the campaign as a conversion system by clarifying the reason to visit for the 20s–40s audience, centralizing key information, and reducing participation friction across touchpoints.
+    I structured the campaign as a <strong>conversion system</strong>, aligning content, information, and offline experience into a single journey that reduces friction and guides users from exposure to participation.
   </p>
 
-  <h3>Audience-led campaign planning</h3>
+  <h3>Audience-Led Message Planning</h3>
   <p>
-    I <strong>designed an audience-led campaign flow for 20s–40s targets</strong>, aligning message direction, content formats, and offline participation to drive measurable foot traffic.
+    I designed the campaign around the <strong>20s–40s audience</strong>, focusing on what would make the district feel worth visiting rather than simply worth noticing. 
+    This translated district strengths into <strong>clear visit motivations</strong> and aligned content, messaging, and activation accordingly.
+  </p>
+
+  <h3>Online-to-Offline Integration</h3>
+  <p>
+    I used content as the <strong>entry point to offline action</strong>, connecting Instagram content, a landing page, and pop-up events into a unified experience that moves users from discovery to participation.
   </p>
 </section>
 
-<!-- Process -->
+<!-- Workflow -->
 <section class="content-section">
-  <h2>Process</h2>
+  <h2>Workflow</h2>
   <div class="process-steps">
+
     <div class="step">
       <div class="step-number">01</div>
       <h4>Research</h4>
       <p>
-        Conducted stakeholder and field research by interviewing 70+ store owners to identify needs around sales growth, street activation, and brand awareness, then mapped the 20s–40s audience context.
+        Conducted <strong>field and stakeholder research</strong>, including interviews with <strong>70+ store owners</strong>, to identify real business needs and audience context.
       </p>
     </div>
 
@@ -502,57 +603,54 @@
       <div class="step-number">02</div>
       <h4>Insight</h4>
       <p>
-        Diagnosed the core gap as “awareness not converting into visits,” and defined the key unlock as a conversion-first journey that clarifies the reason to visit and reduces friction from exposure to participation.
+        Diagnosed the core gap as <strong>awareness not converting into visits</strong> and identified the need for a <strong>conversion-driven journey design</strong>.
       </p>
     </div>
 
     <div class="step">
       <div class="step-number">03</div>
-      <h4>Promotion &amp; Creative</h4>
+      <h4>Promotion & Creative</h4>
       <p>
-        Designed an audience-led campaign flow for 20s–40s targets and produced Instagram Reels/carousel content using Instagram for Business, aligning messaging and creative across touchpoints to drive organic reach (97K+ views).
+        Designed an <strong>audience-led campaign flow</strong> and produced Instagram content that aligned messaging, visuals, and participation cues across touchpoints.
       </p>
     </div>
 
     <div class="step">
       <div class="step-number">04</div>
-      <h4>Activation &amp; Conversion</h4>
+      <h4>Activation & Conversion</h4>
       <p>
-        Planned and executed offline pop-up events (including a book-festival-style activation with 1,000+ visitors) and front-end developed a campaign landing page to centralize information, guide participation, and refine execution using social performance and foot-traffic signals.
+        Executed <strong>offline pop-up events</strong> and built a <strong>campaign landing page</strong> to centralize information and drive participation, refining execution based on real performance signals.
       </p>
     </div>
+
   </div>
 </section>
 
-
+<!-- Execution -->
 <section class="content-section">
   <h2>Execution</h2>
 
-  <h3>Field research &amp; planning</h3>
-  <p>
-    I grounded the campaign in field insights by speaking with owners from 70+ stores and synthesizing needs related to sales, street activation, and awareness into actionable priorities.
-    I then <strong>designed an audience-led campaign flow for 20s–40s targets</strong>, translating district strengths into a clear message direction and participation plan.
-  </p>
-
-  <h3>Content execution &amp; performance</h3>
-  <p>
-    I produced Instagram Reels and carousel posts using Instagram for Business and applied character assets to keep the tone consistent and make key messages instantly understandable,
-    <strong>achieving 97K+ organic views</strong>.
-  </p>
-
-  <h3>Offline activation</h3>
-  <p>
-    To drive real-world visits, I planned and executed <strong>offline pop-up events including a book-festival-style activation that attracted 1,000+ visitors</strong>.
-  </p>
-
-  <h3>Conversion touchpoint (Landing page)</h3>
-  <p>
-    To support conversion, I planned and <strong>front-end developed a campaign landing page</strong> to centralize essential information and guide users toward participation.
-    Throughout the project, I reviewed Instagram performance and foot-traffic data together and refined both online content and offline operations based on what was driving real visits.
-  </p>
+  <ul>
+    <li>
+      Interviewed <strong>70+ store owners</strong> to identify needs and reframed the problem as a <strong>visit-conversion challenge</strong>
+    </li>
+    <li>
+      Designed an <strong>integrated customer journey</strong> connecting content, information, and offline experience
+    </li>
+    <li>
+      Produced Instagram Reels and carousel content, achieving <strong>97K+ organic views</strong>
+    </li>
+    <li>
+      Planned and executed <strong>offline pop-up events attracting 1,000+ visitors</strong>
+    </li>
+    <li>
+      Developed a <strong>campaign landing page</strong> to reduce participation friction and guide users toward action
+    </li>
+    <li>
+      Optimized both content and operations based on <strong>actual visit-driving touchpoints</strong>, not just engagement metrics
+    </li>
+  </ul>
 </section>
-
-
 
 
 
@@ -581,7 +679,7 @@
 <!-- Impact -->
 <section class="content-section">
   <div class="metrics-box">
-    <h3>Impact &amp; Results</h3>
+    <h3>Impact & Results</h3>
     <div class="metrics-grid">
       <div class="metric-item">
         <span class="metric-value">1,000+</span>
@@ -589,15 +687,20 @@
       </div>
       <div class="metric-item">
         <span class="metric-value">97K+</span>
-        <span class="metric-label">Organic Views (IG Reels/Carousel)</span>
+        <span class="metric-label">Organic Views</span>
       </div>
       <div class="metric-item">
         <span class="metric-value">Built</span>
-        <span class="metric-label">Campaign Landing Page (Front-end)</span>
+        <span class="metric-label">Campaign Landing Page</span>
       </div>
     </div>
   </div>
+
+  <p>
+    <strong>Demonstrated the ability to transform fragmented local marketing into a conversion-driven campaign that connects digital engagement with real-world visits.</strong>
+  </p>
 </section>
+
 
 
 
