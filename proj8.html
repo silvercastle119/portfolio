@@ -645,14 +645,93 @@
                 <li>Demonstrated how <strong>metric design itself changes the direction of insight</strong></li>
             </ul>
 
+<section class="content-section">
+  <h3>Code Sample</h3>
+  <p>
+    This Python workflow merges country-level CSV files, filters Netflix Original movies, structures popularity counts by country, and compares <strong>content diversity vs. popularity depth</strong> through visualization.
+  </p>
+
+  <pre class="code-block"><code>import pandas as pd
+import glob
+import os
+import matplotlib.pyplot as plt
+import operator
+
+# Load all CSV files and merge them into one dataset
+allFile = glob.glob(os.path.join('*.csv'))
+allFile.sort()
+dfList = []
+
+for file in allFile:
+    df = pd.read_csv(file)
+    dfList.append(df)
+
+gather = pd.concat(dfList)
+
+# Filter content that is both a movie and a Netflix Original
+dfModify = gather.filter(['Search Country', 'Category', 'Title', 'Netflix Original'])
+Modify = dfModify[
+    (dfModify['Category'] == 'Movie') &
+    ((dfModify['Netflix Original'] == '1') | (dfModify['Netflix Original'] == 1))
+]
+
+# Count the number of times each Netflix Original movie was popular in each country
+duplication = {}
+
+for _, row in Modify.iterrows():
+    country = row['Search Country']
+    title = row['Title']
+
+    if country not in duplication:
+        duplication[country] = {title: 1}
+    else:
+        if title in duplication[country]:
+            duplication[country][title] += 1
+        else:
+            duplication[country][title] = 1
+
+# Sort movie counts by popularity
+for nation in duplication:
+    duplication[nation] = sorted(
+        duplication[nation].items(),
+        key=operator.itemgetter(1)
+    )
+
+# Compare diversity vs popularity depth
+maxMovie_minCount = ['nation', 'Movie', 'Count', 0]
+maxCount_minMovie = ['nation', 'Movie', 'count', 0]
+
+for nation in duplication:
+    x = []
+    y = []
+
+    for i in range(1, len(duplication[nation]) + 1):
+        x.append(i)
+        y.append(int(duplication[nation][i-1][1]))
+
+    if maxMovie_minCount[3] < (len(x) / y[-1]):
+        maxMovie_minCount = [nation, len(x), y[-1], len(x) / y[-1]]
+
+    if maxCount_minMovie[3] < (y[-1] / len(x)):
+        maxCount_minMovie = [nation, len(x), y[-1], y[-1] / len(x)]
+
+    plt.rcParams["figure.figsize"] = (20, 15)
+    plt.title("Compare")
+    plt.xlabel("Movie")
+    plt.ylabel("Count")
+    plt.xlim(1, 200)
+    plt.ylim(1, 400)
+    plt.grid(True)
+    plt.plot(x, y)
+
+plt.savefig("Compare.jpg")
+plt.show()</code></pre>
+</section>
+
             <div class="image-grid">
                 <div>
                     <img src="images/data/netflix-graph.jpg" alt="Netflix diversity vs popularity comparison graph">
                     <p class="image-caption">Comparison framework: diversity vs. popularity concentration across countries</p>
-                </div>
-                <div>
-                    <img src="images/data/netflix-code.jpg" alt="Netflix Python analysis code">
-                    <p class="image-caption">Python-based data integration, filtering, and comparative visualization</p>
                 </div>
             </div>
 
